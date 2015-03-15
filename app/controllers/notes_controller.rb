@@ -8,7 +8,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(notes_param)
     @note.save
-    render json: {note: @note}
+    render json: @note
   end
 
   def show
@@ -23,7 +23,7 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    return_data
+    head :no_content
   end
 
 private
